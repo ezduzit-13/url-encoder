@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     ### my changes
         "corsheaders",
     'rest_framework',
+    'api',
 
 ]
 
