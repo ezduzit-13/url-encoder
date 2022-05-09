@@ -1,13 +1,13 @@
-import LongUrl from "./components/LongUrl";
-
-
+import Encode from "./components/Encode";
+import './app.css'
+import Decode from "./components/Decode";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Submit your long url here</h1>
-      <LongUrl />
-     
+    <div className="cont">
+      <Encode />
+      <Decode />
+      
     </div>
   );
 }

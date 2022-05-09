@@ -13,11 +13,11 @@ def get_urls(request):
     serializer = UrlSerializer(stays,many = True)
     return Response(serializer.data)
 
+
 @api_view(['POST'])
 def encode(request):
     request_data = request.data
     unique_id = str(uuid.uuid4())[:5]
-
 
     if Url.objects.filter(long_url = request_data['long_url']).exists():
         the_obj = Url.objects.get(long_url = request_data['long_url'])
@@ -40,9 +40,34 @@ def encode(request):
 
         frontend_data = {
             'code':'this does not exist',
-            'url_id':'https://shorty/'+unique_id,
+            'url':'https://shorty/'+unique_id,
+        }
+        return Response(frontend_data)
+
+@api_view(['POST'])
+def decode(request):
+    request_data = request.data
+    url_key = request_data['short_url'][15:]
+
+    if Url.objects.filter(url_id = url_key).exists():
+        valid_url = Url.objects.get(url_id = url_key)
+        long_url = valid_url.long_url
+
+        frontend_data = {
+            'code':'it was a valid link',
+            'url':long_url
         }
 
-    
         return Response(frontend_data)
+
+    else:
+        frontend_data = {
+            'code':'link did not exist',
+            'url':'sorry :( , not a valid shorty',
+        }
+
+        return Response(frontend_data)
+
+
+
 

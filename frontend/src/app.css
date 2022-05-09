@@ -1,0 +1,11 @@
+.box{
+  width: 35vw;
+  height: 45vh;
+
+}
+.cont{
+  margin-top: 6vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
