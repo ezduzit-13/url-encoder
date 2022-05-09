@@ -1,7 +1,6 @@
 from django.db import models
 
 class Url(models.Model):
-    long_url = models.CharField(max_length=500)
-    short_url = models.CharField(max_length=40,default='https://shorty/')
-
+    long_url = models.CharField(max_length=500,unique=True)
+    url_id = models.CharField(max_length=7,unique=True)
 
