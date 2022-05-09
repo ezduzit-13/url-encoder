@@ -16,6 +16,7 @@ const Encode = () => {
     postRequest('http://localhost:8000/api/encode/',obj)
     .then(data=>{
       getNewUrl(data.url)
+      console.log(data)
     })
     .catch(e=>console.log(e))
   }

@@ -43,6 +43,7 @@ def encode(request):
             'url':'https://shorty/'+unique_id,
         }
         return Response(frontend_data)
+        
 
 @api_view(['POST'])
 def decode(request):
