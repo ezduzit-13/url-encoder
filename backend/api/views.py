@@ -13,7 +13,6 @@ def get_urls(request):
     serializer = UrlSerializer(stays,many = True)
     return Response(serializer.data)
 
-
 @api_view(['POST'])
 def encode(request):
     request_data = request.data
@@ -28,9 +27,6 @@ def encode(request):
         }
         return Response(frontend_data)
     else:
-        print(request_data['long_url'],'long url ')
-        print(unique_id,'the unique id hopefully')
-
         new_url = {
             'long_url':request_data['long_url'],
             'url_id':unique_id,
@@ -43,7 +39,6 @@ def encode(request):
             'url':'https://shorty/'+unique_id,
         }
         return Response(frontend_data)
-        
 
 @api_view(['POST'])
 def decode(request):
